@@ -76,9 +76,28 @@ Route::any('test',['uses'=>'StudentController@getMessage']);
 Route::any('query',['uses'=>'StudentController@query1']);
 Route::any('query2',['uses'=>'StudentController@query2']);
 Route::any('query4',['uses'=>'StudentController@query4']);
-Route::any('orm1',['uses'=>'StudentController@orm1']);
+
+Route::any('request',['uses'=>'StudentController@request']);
 
 
+/****************学生信息管理理由---start*********************/
+Route::any('student/index',['uses'=>'StudentController@orm1']);
+Route::any('common',['uses'=>'StudentController@common']);
+Route::any('student/create',['uses'=>'StudentController@create']);
+Route::any('student/save',['uses'=>'StudentController@save']);
+/****************学生信息管理理由---stop*********************/
+Route::get('student/save', function() {
+    DB::enableQueryLog();
+    $user = App\Student::all();
+    return response()->json(DB::getQueryLog());
+});
+
+
+
+Route::group(['middleware'=>['web']],function(){
+    Route::any('session1',['uses'=>'StudentController@session1']);
+    Route::any('session2',['uses'=>'StudentController@session2']);
+});
 
 /*
 |--------------------------------------------------------------------------

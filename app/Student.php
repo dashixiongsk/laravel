@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model{
     protected  $table = 'student';
-
     protected $primarykey='id';
+    public $timestamps = false;
+
 }

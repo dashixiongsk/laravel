@@ -6,11 +6,42 @@
  * Time: 16:17
  */
 namespace App\Http\Controllers;
+use App\Http\Requests\Request;
 use App\Student;
 use Illuminate\Support\Facades\DB;
 
+
 class StudentController extends Controller{
 
+    public function orm1(){
+        $students = Student::paginate(3);
+        return view('student.index',['students'=>$students]);
+    }
+
+    public function create(){
+
+        return view('student.create');
+    }
+    public function save(\Illuminate\Http\Request $request){
+        $data = $request->input('Student');
+        $Student = new Student();
+        //print_r($Student);die;
+        $Student->name = $data['name'];
+        $Student->age = $data['age'];
+        $Student->create_time=date("Y-m-d H:i:s");
+
+
+
+        if($Student->save()){
+            return redirect('student/index');
+        }else{
+            return redirect()->back();
+        }
+
+    }
+
+
+    /*
     public function getMessage(){
 
 
@@ -53,8 +84,6 @@ class StudentController extends Controller{
         DB::table('student')->chunk(2,function($name){      //每次返回两条记录
         var_dump($name);
         });
-
-
     }
 
     //orm
@@ -62,8 +91,27 @@ class StudentController extends Controller{
         //$students = Student::all();
         //$students = Student::find('32');
         //$students = Student::findOrFail('32');//根据主键查找，没有会报错
-        $students = Student::get();
-        dd($students);
+        $students = Student::paginate(3);
+        return view('student.index',['students'=>$students]);
+       // dd($students);
     }
+    public function request(\Illuminate\Http\Request $request){
+        echo $request->input('name');
+        //echo 122;
+
+    }
+    public function session1(\Illuminate\Http\Request $request){
+        //http->request session()
+        session()->put('key2','das');
+
+    }
+    public function session2(\Illuminate\Http\Request $request){
+        echo session()->get('key2');
+    }
+
+    public function common(){
+        return view('common.layouts');
+    }
+    */
 
 }
