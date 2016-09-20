@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/public/static/bootstrap" charset="GBK" />
     <file url="file://$PROJECT_DIR$/public/static/jquery-1.12.4.min.js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/sql/larval.sql" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

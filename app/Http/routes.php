@@ -85,12 +85,8 @@ Route::any('student/index',['uses'=>'StudentController@orm1']);
 Route::any('common',['uses'=>'StudentController@common']);
 Route::any('student/create',['uses'=>'StudentController@create']);
 Route::any('student/save',['uses'=>'StudentController@save']);
+Route::any('student/delete/{id}',['uses'=>'StudentController@delete']);
 /****************学生信息管理理由---stop*********************/
-Route::get('student/save', function() {
-    DB::enableQueryLog();
-    $user = App\Student::all();
-    return response()->json(DB::getQueryLog());
-});
 
 
 

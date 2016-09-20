@@ -29,15 +29,22 @@ class StudentController extends Controller{
         $Student->name = $data['name'];
         $Student->age = $data['age'];
         $Student->create_time=date("Y-m-d H:i:s");
-
-
-
         if($Student->save()){
             return redirect('student/index');
         }else{
             return redirect()->back();
         }
 
+    }
+
+    public function delete($id){
+
+        $student = Student::find($id);
+        if($student->delete($id)){
+            return redirect('student/index')->with('success','删除成功');
+        }else{
+            return redirect('student/index')->with('error','删除失败');
+        }
     }
 
 

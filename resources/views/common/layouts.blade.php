@@ -23,7 +23,9 @@
         margin-left: 15px;
         width: 65%;
         height:400px;
-        border:1px solid #0a001f;
+       // border:1px solid #0a001f;
+        border-radius: 10px;
+        background: #F0F0F0;
     }
     .header{
         margin: 0 auto;
@@ -65,6 +67,7 @@
 </body>
 <script src="{{asset('static/jquery-1.12.4.min.js')}}"></script>
 <script src="{{asset('static/bootstrap/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('static/bootstrap/js/bootstrap-paginator.js')}}"></script>
 
 @section('javascript')
     <script></script>
